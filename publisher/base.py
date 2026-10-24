@@ -14,7 +14,7 @@ class ArticlePayload(BaseModel):
     excerpt: str = Field(default="", description="Краткое описание / лид статьи")
     tags: List[str] = Field(default_factory=list, description="Список тегов (без решеток или с ними)")
     cover_image_path: Optional[str] = Field(default=None, description="Локальный путь к изображению обложки")
-    cta_link: str = Field(default="https://t.me/AcademAuditBot", description="Ссылка для призыва к действию (CTA)")
+    cta_link: str = Field(default="https://t.me/AcademAudit_Support", description="Ссылка для призыва к действию (CTA)")
     source_platform: str = Field(default="custom", description="Платформа-источник (VC, Habr, Blog, AI)")
 
 

@@ -1,8 +1,8 @@
 """
-Точка одновременного запуска обоих ботов AcademAudit:
-1. @AcademAuditBot (клиентский лид-бот для студентов)
-2. @AcademAuditPublishBot (бот редакции и автопостинга для администратора)
-Включает автоматический HTTP-healthcheck для облачных платформ (Koyeb, Render).
+Точка запуска бота публикаций AcademAudit Publisher (@AcademAuditPublishBot)
+с автоматическим HTTP-healthcheck для облачных платформ.
+Все клиентские заявки и призывы к действию (CTA) ведут напрямую в Telegram
+администратора (@AcademAudit_Support) и на лендинг сервиса.
 """
 
 import os
@@ -11,7 +11,6 @@ import asyncio
 import logging
 from aiohttp import web
 
-from main import main as run_client_bot
 from publisher_bot import main as run_publisher_bot
 
 logging.basicConfig(
@@ -26,7 +25,7 @@ async def start_healthcheck_server(port: int = 8000):
     """Легковесный HTTP-сервер для прохождения health check в облачных сервисах."""
     async def handle_health(request):
         return web.Response(
-            text="OK: AcademAudit Bot Ecosystem is running 24/7",
+            text="OK: AcademAudit Publisher Bot is running 24/7",
             content_type="text/plain",
         )
 
@@ -42,9 +41,8 @@ async def start_healthcheck_server(port: int = 8000):
 
 
 async def run_ecosystem():
-    logger.info("Запуск экосистемы AcademAudit (Лид-бот + Бот редакции)...")
+    logger.info("Запуск бота публикаций AcademAudit Publisher (@AcademAuditPublishBot)...")
     tasks = [
-        run_client_bot(),
         run_publisher_bot(),
     ]
 
@@ -64,4 +62,4 @@ if __name__ == "__main__":
     try:
         asyncio.run(run_ecosystem())
     except (KeyboardInterrupt, SystemExit):
-        logger.info("Все боты сервиса остановлены.")
+        logger.info("Бот публикаций остановлен.")

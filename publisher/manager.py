@@ -42,13 +42,13 @@ class PublisherManager:
         # 1. Telegram
         bot_token = os.getenv("PUBLISHER_BOT_TOKEN")
         channel_id = os.getenv("TG_CHANNEL_ID")
-        bot_username = os.getenv("CLIENT_BOT_USERNAME", "AcademAuditBot")
+        manager_username = os.getenv("MANAGER_USERNAME", "AcademAudit_Support")
 
         if bot_token and channel_id:
             self._publishers["telegram"] = TelegramChannelPublisher(
                 bot_token=bot_token,
                 channel_id=channel_id,
-                bot_username=bot_username,
+                manager_username=manager_username,
             )
         else:
             logger.warning("Telegram паблишер не инициализирован (отсутствует PUBLISHER_BOT_TOKEN или TG_CHANNEL_ID).")

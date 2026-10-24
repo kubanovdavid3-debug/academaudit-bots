@@ -37,24 +37,23 @@ class TelegramChannelPublisher(BasePublisher):
         self,
         bot_token: Optional[str] = None,
         channel_id: Optional[str] = None,
-        bot_username: str = "AcademAuditBot",
+        manager_username: str = "AcademAudit_Support",
     ):
         """
         Инициализация паблишера.
         
-        :param bot_token: Токен бота Telegram (если None, берется из .env BOT_TOKEN)
+        :param bot_token: Токен бота Telegram (если None, берется из .env PUBLISHER_BOT_TOKEN)
         :param channel_id: ID канала (@channel_name или -100...) (если None, берется из .env TG_CHANNEL_ID)
-        :param bot_username: Юзернейм бота для генерации инлайн-ссылки
+        :param manager_username: Юзернейм администратора для связи
         """
         load_dotenv()
 
-        # Если токен не передан явно, берем токен бота-издателя PUBLISHER_BOT_TOKEN (или fallback на BOT_TOKEN)
         self.bot_token = (bot_token or os.getenv("PUBLISHER_BOT_TOKEN") or os.getenv("BOT_TOKEN", "")).strip()
         self.channel_id = (channel_id or os.getenv("TG_CHANNEL_ID", "")).strip()
-        self.bot_username = bot_username.lstrip("@")
+        self.manager_username = (manager_username or os.getenv("MANAGER_USERNAME", "AcademAudit_Support")).lstrip("@")
 
         if not self.bot_token:
-            raise ValueError("Токен для публикаций не указан (задайте PUBLISHER_BOT_TOKEN или BOT_TOKEN в .env).")
+            raise ValueError("Токен для публикаций не указан (задайте PUBLISHER_BOT_TOKEN в .env).")
 
     def _format_tags(self, tags: List[str]) -> str:
         """Форматирует теги в хештеги Telegram."""
@@ -68,29 +67,16 @@ class TelegramChannelPublisher(BasePublisher):
         return " ".join(formatted)
 
     def _build_inline_keyboard(self, cta_link: Optional[str] = None) -> InlineKeyboardMarkup:
-        """Создает инлайн-клавиатуру с кнопкой перехода в бота и опциональным сайтом."""
-        # Deep link со специальным параметром start=audit, чтобы бот сразу начинал проверку
-        bot_url = f"https://t.me/{self.bot_username}?start=audit"
+        """Создает инлайн-клавиатуру с кнопкой связи с экспертом в Telegram."""
+        target_url = cta_link if cta_link and cta_link.strip() else f"https://t.me/{self.manager_username}"
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🔍 Проверить курсовую в боте",
-                    url=bot_url,
+                    text="💬 Написать эксперту / Аудит работы",
+                    url=target_url,
                 )
             ]
         ]
-
-        # Если передана внешняя ссылка (например, на калькулятор/сайт), добавляем вторую кнопку
-        if cta_link and cta_link.strip() and not cta_link.startswith(bot_url):
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text="🌐 Рассчитать на сайте",
-                        url=cta_link.strip(),
-                    )
-                ]
-            )
-
         return InlineKeyboardMarkup(inline_keyboard=buttons)
 
     def _split_text(self, text: str, max_chunk_size: int = 3900) -> List[str]:

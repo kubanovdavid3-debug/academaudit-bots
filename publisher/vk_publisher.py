@@ -40,20 +40,20 @@ class VKPublisher(BasePublisher):
         self,
         access_token: Optional[str] = None,
         owner_id: Optional[str | int] = None,
-        bot_link: str = "https://t.me/AcademAuditBot",
+        bot_link: str = "https://t.me/AcademAudit_Support",
     ):
         """
         Инициализация паблишера ВКонтакте.
         
         :param access_token: Токен доступа VK (если None, берется из .env VK_ACCESS_TOKEN)
         :param owner_id: ID сообщества со знаком минус (например: -218800000)
-        :param bot_link: Ссылка на бота для блока призыва к действию
+        :param bot_link: Ссылка для связи (Telegram-менеджер или сайт)
         """
         load_dotenv()
 
         self.access_token = (access_token or os.getenv("VK_ACCESS_TOKEN", "")).strip()
         raw_owner_id = owner_id or os.getenv("VK_OWNER_ID", "")
-        self.bot_link = bot_link
+        self.bot_link = bot_link or f"https://t.me/{os.getenv('MANAGER_USERNAME', 'AcademAudit_Support')}"
 
         # Преобразуем owner_id в числовой отрицательный ID сообщества
         try:
@@ -217,8 +217,8 @@ class VKPublisher(BasePublisher):
                     f"{clean_title}\n",
                     clean_text,
                     "\n━━━━━━━━━━━━━━━━━━━━",
-                    "🔍 Бесплатный аудит темы и расчет стоимости курсовой по ГОСТ 2026 в боте:",
-                    f"👉 {target_cta_link}",
+                    "🔍 Бесплатный аудит темы и расчет стоимости курсовой по ГОСТ 2026 без предоплаты:",
+                    f"👉 Написать эксперту: {target_cta_link}",
                     f"\n{tags_str}",
                 ]
                 full_message = "\n".join(message_parts)

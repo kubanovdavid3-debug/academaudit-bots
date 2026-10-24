@@ -40,7 +40,8 @@ ENV_PATH = Path("d:/temka/.env")
 load_dotenv(dotenv_path=ENV_PATH)
 
 PUBLISHER_BOT_TOKEN = os.getenv("PUBLISHER_BOT_TOKEN", "").strip()
-CLIENT_BOT_USERNAME = "AcademAuditBot"
+MANAGER_USERNAME = os.getenv("MANAGER_USERNAME", "AcademAudit_Support").strip()
+CONTACT_URL = f"https://t.me/{MANAGER_USERNAME}"
 
 ADMIN_CHAT_ID_RAW = os.getenv("ADMIN_CHAT_ID", "").strip()
 try:
@@ -92,7 +93,7 @@ TEMPLATES = {
         ),
         tags=["антиплагиат", "курсовая2026", "нормоконтроль", "советы_студентам"],
         cover_image_path="d:/temka/avatar.jpg" if Path("d:/temka/avatar.jpg").exists() else None,
-        cta_link=f"https://t.me/{CLIENT_BOT_USERNAME}?start=antiplagiat_post",
+        cta_link=CONTACT_URL,
         source_platform="editorial",
     ),
     "gost": ArticlePayload(
@@ -106,11 +107,11 @@ TEMPLATES = {
             "• <b>Абзацный отступ:</b> строго 1.25 см (не пробелами!).\n"
             "• <b>Нумерация страниц:</b> арабскими цифрами по центру нижней части листа, титульник считается, но не нумеруется.\n"
             "• <b>Таблицы и рисунки:</b> сквозная нумерация (Таблица 1.1, Рис. 2.3) со ссылками по тексту.\n\n"
-            "Хотите получить полный PDF-чеклист под методичку вашей кафедры? Переходите в бота 👇"
+            "Хотите получить полный PDF-чеклист под методичку вашей кафедры? Пишите эксперту 👇"
         ),
         tags=["гост7_32", "нормоконтроль", "оформление", "курсовая"],
         cover_image_path="d:/temka/avatar.jpg" if Path("d:/temka/avatar.jpg").exists() else None,
-        cta_link=f"https://t.me/{CLIENT_BOT_USERNAME}?start=gost_post",
+        cta_link=CONTACT_URL,
         source_platform="editorial",
     ),
     "deadlines": ArticlePayload(
@@ -126,7 +127,7 @@ TEMPLATES = {
         ),
         tags=["дедлайн", "срочно", "сессия", "курсовая24часа"],
         cover_image_path="d:/temka/avatar.jpg" if Path("d:/temka/avatar.jpg").exists() else None,
-        cta_link=f"https://t.me/{CLIENT_BOT_USERNAME}?start=urgent_post",
+        cta_link=CONTACT_URL,
         source_platform="editorial",
     ),
 }
@@ -222,7 +223,7 @@ async def handle_start(message: Message, state: FSMContext):
     text = (
         "👋 <b>Пульт управления публикациями «AcademAudit Publisher»</b>\n\n"
         f"📡 <b>Текущий канал:</b> {current_channel}\n"
-        f"🤖 <b>Клиентский бот для ссылок:</b> @{CLIENT_BOT_USERNAME}\n\n"
+        f"👤 <b>Контакт для заявок клиентов:</b> @{MANAGER_USERNAME}\n\n"
         "Выберите действие:"
     )
     await message.answer(text=text, reply_markup=get_main_menu_kb())
@@ -459,7 +460,7 @@ async def execute_publication(callback: CallbackQuery):
             tg_pub = TelegramChannelPublisher(
                 bot_token=PUBLISHER_BOT_TOKEN,
                 channel_id=channel_id,
-                bot_username=CLIENT_BOT_USERNAME,
+                manager_username=MANAGER_USERNAME,
             )
             tg_res = await tg_pub.publish(article)
             if tg_res.success:

@@ -198,7 +198,7 @@ async def main_async():
         tags = list(raw_tags)
 
     excerpt = metadata.get("excerpt") or ""
-    cta_link = metadata.get("cta_link") or "https://t.me/AcademAuditBot?start=cli_post"
+    cta_link = metadata.get("cta_link") or f"https://t.me/{os.getenv('MANAGER_USERNAME', 'AcademAudit_Support')}"
     cover_raw = metadata.get("cover") or metadata.get("cover_image_path")
     cover_path = resolve_cover_path(cover_raw, file_path.parent)
 

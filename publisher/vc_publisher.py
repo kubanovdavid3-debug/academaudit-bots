@@ -253,8 +253,8 @@ class VCPublisher(BasePublisher):
                 "data": {"text": clean_p}
             })
 
-        # Финальный конверсионный CTA-блок со ссылкой на бота
-        cta_url = cta_link or "https://t.me/AcademAuditBot?start=vc_longread"
+        # Финальный конверсионный CTA-блок со ссылкой на эксперта
+        cta_url = cta_link or f"https://t.me/{os.getenv('MANAGER_USERNAME', 'AcademAudit_Support')}"
         blocks.append({
             "type": "paragraph",
             "cover": False,
@@ -265,7 +265,7 @@ class VCPublisher(BasePublisher):
                     "<br>━━━━━━━━━━━━━━━━━━━━<br>"
                     "<b>Сервис «AcademAudit»:</b> Независимый аудит тем и проверка студенческих работ "
                     "по стандартам ГОСТ 7.32 и Антиплагиат.ВУЗ 2026 без предоплаты.<br>"
-                    f"👉 <b><a href='{cta_url}'>Рассчитать стоимость и проверить курсовую в боте</a></b>"
+                    f"👉 <b><a href='{cta_url}'>Написать эксперту и проверить курсовую в Telegram</a></b>"
                 )
             }
         })
