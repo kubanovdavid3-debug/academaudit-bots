@@ -13,7 +13,7 @@ platforms:
 cover: avatar.jpg
 excerpt: Разбор обновленных алгоритмов проверки студенческих работ в 2026 году, почему
   макросы больше не работают и как оформить работу по ГОСТ без переделок.
-cta_link: https://t.me/AcademAuditBot?start=cli_antiplagiat_2026
+cta_link: https://t.me/AcademAudit_Support
 published_at: '2026-10-24T15:06:50.368034'
 published_links:
   vk: https://vk.com/wall-242554323_2

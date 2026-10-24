@@ -16,7 +16,7 @@ cover: avatar.jpg
 excerpt: Разбор 11 критических ошибок нормоконтроля курсовых и дипломов в 2026 году.
   Таблицы, формулы, сноски, поля и список литературы по ГОСТ Р 7.0.100-2018 с примерами
   «Было / Стало».
-cta_link: https://t.me/AcademAuditBot?start=cli_gost_2026
+cta_link: https://t.me/AcademAudit_Support
 published_at: '2026-10-24T15:28:03.639454'
 published_links:
   telegram: https://t.me/academaudit_channel/5
@@ -200,7 +200,7 @@ published_links:
 Если у вас нет времени вручную вымерять отступы линейкой и перелопачивать 40 страниц текста перед дедлайном:
 
 💡 **Сервис академического сопровождения «AcademAudit»:**
-* Запустите нашего Telegram-бота: **[@AcademAuditBot](https://t.me/AcademAuditBot)** (или напишите куратору: [@AcademAudit_Support](https://t.me/AcademAudit_Support)).
+* Запустите нашего Telegram-бота: **[@AcademAudit_Support](https://t.me/AcademAudit_Support)** (или напишите куратору: [@AcademAudit_Support](https://t.me/AcademAudit_Support)).
 * Бот проведет экспресс-аудит структуры вашей работы, проверит соответствие ГОСТу и выявит фрагменты, которые гарантированно вызовут вопросы нормоконтроля и Антиплагиата.
 * На сайте доступен онлайн-расчет объема доработок: загрузите черновик и получите персональный аудит-отчет до того, как работу увидит научный руководитель.
 
