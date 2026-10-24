@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AcademAudit — Академический аудит и сопровождение курсовых работ по ГОСТ 2026</title>
+  <meta name="description" content="Независимый аудит курсовых работ, проверка по закрытым базам Антиплагиат.ВУЗ и сопровождение до зачета. 0% предоплаты за первичный аудит.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AcademAudit — Академический аудит и сопровождение курсовых">
+  <meta property="og:description" content="Узнай точную стоимость и получи ГОСТ-чеклист для твоей работы за 60 секунд.">
+  <meta property="og:type" content="website">
+
+  <!-- Шрифт Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            },
+            dark: {
+              bg: '#0B0F19',
+              surface: '#111827',
+              card: '#161F33',
+              border: '#1F293D',
+              muted: '#94A3B8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Кастомный тонкий скроллбар */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0B0F19; }
+    ::-webkit-scrollbar-thumb { background: #1F293D; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10B981; }
+
+    /* Стилизация ползунка оригинальности */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #10B981;
+      cursor: pointer;
+      border: 3px solid #0B0F19;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.6);
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:active {
+      transform: scale(1.2);
+    }
+    input[type=range]::-moz-range-thumb {
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #10B981;
+      cursor: pointer;
+      border: 3px solid #0B0F19;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.6);
+    }
+
+    /* Мобильный отклик на тап */
+    * { -webkit-tap-highlight-color: transparent; }
+  </style>
+</head>
+<body class="bg-dark-bg text-slate-100 font-sans min-h-screen antialiased selection:bg-brand-500 selection:text-white flex flex-col justify-between overflow-x-hidden">
+
+  <!-- ==================== ХЕДЕР ==================== -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-dark-bg/85 border-b border-dark-border">
+    <div class="max-w-6xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Логотип -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 p-[1.5px] transition-transform group-hover:scale-105">
+          <div class="w-full h-full bg-dark-bg rounded-[10px] flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+            Academ<span class="text-brand-400">Audit</span>
+          </span>
+          <span class="text-[10px] text-slate-400 tracking-wider uppercase font-medium">Academic Standards</span>
+        </div>
+      </a>
+
+      <!-- Бейдж РФ (для планшетов и десктопов) -->
+      <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark-card border border-dark-border text-xs text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+        <span>Работаем по всей РФ</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-brand-400 font-medium">ГОСТ 7.32-2017</span>
+      </div>
+
+      <!-- Быстрые действия -->
+      <div class="flex items-center gap-3">
+        <a href="#quiz-section" class="hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-dark-card hover:bg-dark-border border border-dark-border text-xs font-semibold text-slate-200 transition-all hover:text-white">
+          Калькулятор
+        </a>
+        <a id="header-tg-link" href="https://t.me/AcademAudit_Support" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-emerald-600 hover:from-brand-500 hover:to-emerald-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .4z"/>
+          </svg>
+          <span>Telegram</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== HERO БЛОК ==================== -->
+  <section class="relative pt-8 pb-14 sm:pt-16 sm:pb-20 overflow-hidden">
+    <!-- Фоновые свечения -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-gradient-to-tr from-brand-500/15 to-indigo-500/15 blur-[120px] pointer-events-none -z-10"></div>
+
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      
+      <!-- Тег оффера -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dark-card/90 border border-brand-500/30 text-brand-400 text-xs sm:text-sm font-medium mb-6 shadow-sm animate-pulse-slow">
+        <span class="flex h-2 w-2 rounded-full bg-brand-400"></span>
+        <span>Академический аудит и сопровождение курсовых работ по всей России по ГОСТ 2026</span>
+      </div>
+
+      <!-- Главный заголовок -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-5">
+        Защитите курсовую работу <br class="hidden sm:block">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-emerald-300 to-indigo-400">
+          без стресса и ночных переделок
+        </span>
+      </h1>
+
+      <!-- Подзаголовок -->
+      <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-lg leading-relaxed mb-8">
+        Узнайте точную стоимость, сроки и получите ГОСТ-чеклист для вашей кафедры за 60 секунд. 
+        <strong class="text-white font-semibold">0% предоплаты</strong> за первичный аудит темы и структуры. Никаких навязчивых холодных звонков.
+      </p>
+
+      <!-- Главная кнопка действия -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-12">
+        <a href="#quiz-section" class="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-400 hover:to-emerald-500 text-dark-bg font-bold text-base shadow-xl shadow-brand-500/25 transition-all transform active:scale-98">
+          <span>Рассчитать стоимость и срок</span>
+          <svg class="w-5 h-5 text-dark-bg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Метрики доверия -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left">
+        <div class="p-3.5 rounded-xl bg-dark-card/60 border border-dark-border backdrop-blur-sm">
+          <div class="text-xl sm:text-2xl font-black text-brand-400">1 480+</div>
+          <div class="text-xs text-slate-400 mt-0.5">успешных защит в 2025/26</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-dark-card/60 border border-dark-border backdrop-blur-sm">
+          <div class="text-xl sm:text-2xl font-black text-white">98.4%</div>
+          <div class="text-xs text-slate-400 mt-0.5">допуск с 1-й проверки</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-dark-card/60 border border-dark-border backdrop-blur-sm">
+          <div class="text-xl sm:text-2xl font-black text-indigo-400">0 ₽</div>
+          <div class="text-xs text-slate-400 mt-0.5">предоплата за аудит темы</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-dark-card/60 border border-dark-border backdrop-blur-sm">
+          <div class="text-xl sm:text-2xl font-black text-brand-400">от 24 ч.</div>
+          <div class="text-xs text-slate-400 mt-0.5">срочный аудит и доводка</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ИНТЕРАКТИВНЫЙ КВИЗ-КАЛЬКУЛЯТОР ==================== -->
+  <section id="quiz-section" class="py-12 sm:py-16 relative">
+    <div class="max-w-3xl mx-auto px-4">
+      
+      <!-- Заголовок квиза -->
+      <div class="text-center mb-8">
+        <span class="text-xs uppercase tracking-widest text-brand-400 font-bold">Онлайн-калькулятор</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+          Расчет стоимости и параметров за 4 шага
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2">
+          С прозрачной фиксацией цены и гарантией соблюдения требований кафедры
+        </p>
+      </div>
+
+      <!-- Карточка квиза -->
+      <div class="bg-dark-card border border-dark-border rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-8 relative overflow-hidden backdrop-blur-xl">
+        
+        <!-- Верхняя плашка цены в реальном времени -->
+        <div class="flex items-center justify-between pb-5 mb-6 border-b border-dark-border">
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Предварительный расчет:</div>
+            <div class="flex items-baseline gap-2 mt-0.5">
+              <span id="price-display" class="text-2xl sm:text-3xl font-black text-brand-400">от 2 490 ₽</span>
+              <span id="urgent-badge" class="hidden px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                ⚡️ Срочный тариф
+              </span>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-slate-400 block font-medium">Шаг <span id="current-step-num" class="text-white font-bold">1</span> из 4</span>
+            <span id="step-label" class="text-[11px] text-brand-400 font-medium">Направление</span>
+          </div>
+        </div>
+
+        <!-- Прогресс-бар -->
+        <div class="w-full bg-dark-surface rounded-full h-2 mb-8 overflow-hidden p-0.5">
+          <div id="progress-bar" class="bg-gradient-to-r from-brand-500 to-emerald-400 h-full rounded-full transition-all duration-300 ease-out" style="width: 25%"></div>
+        </div>
+
+        <!-- ФОРМА КВИЗА -->
+        <form id="quiz-form" onsubmit="return false;">
+
+          <!-- ШАГ 1: Направление -->
+          <div class="quiz-step" data-step="1">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">1. Выберите профиль вашей дисциплины:</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-5">Влияет на специфику требований ГОСТ и профильную кафедральную проверку.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="subject-options">
+              
+              <label class="subject-card flex items-center p-4 rounded-xl border border-brand-500 bg-brand-500/10 cursor-pointer transition-all active:scale-[0.99]">
+                <input type="radio" name="subject" value="Юриспруденция и право" class="sr-only" checked>
+                <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mr-3.5 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Юриспруденция и право</div>
+                  <div class="text-xs text-slate-400">НПА, судебная практика, кодексы</div>
+                </div>
+                <div class="ml-auto check-indicator text-brand-400 opacity-100">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                </div>
+              </label>
+
+              <label class="subject-card flex items-center p-4 rounded-xl border border-dark-border bg-dark-surface/70 hover:border-brand-500/60 cursor-pointer transition-all active:scale-[0.99]">
+                <input type="radio" name="subject" value="Экономика и менеджмент" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center mr-3.5 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Экономика, финансы, учет</div>
+                  <div class="text-xs text-slate-400">Расчеты, фин. отчетность, SWOT</div>
+                </div>
+                <div class="ml-auto check-indicator text-brand-400 opacity-0">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                </div>
+              </label>
+
+              <!-- Техническое направление: коэффициент x1.3 -->
+              <label class="subject-card flex items-center p-4 rounded-xl border border-dark-border bg-dark-surface/70 hover:border-brand-500/60 cursor-pointer transition-all active:scale-[0.99]" data-tech="true">
+                <input type="radio" name="subject" value="Технические и IT дисциплины" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mr-3.5 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white flex items-center gap-1.5">
+                    Технические и IT
+                    <span class="text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-800 px-1.5 py-0.2 rounded font-mono">+30%</span>
+                  </div>
+                  <div class="text-xs text-slate-400">Чертежи, код, схемы, спецрасчеты</div>
+                </div>
+                <div class="ml-auto check-indicator text-brand-400 opacity-0">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                </div>
+              </label>
+
+              <label class="subject-card flex items-center p-4 rounded-xl border border-dark-border bg-dark-surface/70 hover:border-brand-500/60 cursor-pointer transition-all active:scale-[0.99]">
+                <input type="radio" name="subject" value="Гуманитарные и педагогика" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mr-3.5 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Гуманитарные, психология</div>
+                  <div class="text-xs text-slate-400">Педагогика, история, филология</div>
+                </div>
+                <div class="ml-auto check-indicator text-brand-400 opacity-0">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                </div>
+              </label>
+
+              <label class="subject-card flex items-center p-4 rounded-xl border border-dark-border bg-dark-surface/70 hover:border-brand-500/60 cursor-pointer transition-all active:scale-[0.99] sm:col-span-2">
+                <input type="radio" name="subject" value="Естественные науки и медицина" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center mr-3.5 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Естественные науки, медицина, биология</div>
+                  <div class="text-xs text-slate-400">Экспериментальные данные, фарм. анализ, экология</div>
+                </div>
+                <div class="ml-auto check-indicator text-brand-400 opacity-0">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- ШАГ 2: Ввод темы + тумблер -->
+          <div class="quiz-step hidden" data-step="2">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">2. Укажите тему вашей курсовой работы:</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-5">Эксперт сверит ее с актуальной базой диссертаций и нормативных актов 2026 года.</p>
+
+            <div class="space-y-4">
+              <div>
+                <label for="topic-input" class="block text-xs font-semibold text-slate-300 mb-2 uppercase tracking-wider">
+                  Тема работы (из приказа или методички):
+                </label>
+                <div class="relative">
+                  <textarea id="topic-input" rows="3" 
+                    placeholder="Например: Правовое регулирование цифровых финансовых активов в РФ..."
+                    class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-dark-border focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-white placeholder-slate-500 text-sm outline-none transition-all resize-none"></textarea>
+                </div>
+                <p id="topic-error" class="hidden text-rose-400 text-xs mt-1.5 flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                  Пожалуйста, введите тему или отметьте тумблер ниже.
+                </p>
+              </div>
+
+              <!-- Тумблер: Тема не утверждена -->
+              <div class="p-4 rounded-xl bg-dark-surface/60 border border-dark-border flex items-start gap-3.5 cursor-pointer hover:border-slate-700 transition-all" id="toggle-container">
+                <input type="checkbox" id="no-topic-toggle" class="mt-1 w-4 h-4 rounded text-brand-500 bg-dark-card border-dark-border focus:ring-0 focus:ring-offset-0 cursor-pointer">
+                <label for="no-topic-toggle" class="cursor-pointer text-xs sm:text-sm text-slate-300 select-none">
+                  <span class="font-semibold text-white block">Тема еще не утверждена кафедрой</span>
+                  <span class="text-slate-400 text-xs">Академический эксперт бесплатно подберет 3 готовые темы под вашего научного руководителя.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ШАГ 3: Сроки и Оригинальность -->
+          <div class="quiz-step hidden" data-step="3">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">3. Срок сдачи и требуемая оригинальность:</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-6">Точный расчет времени на проверку, форматирование по ГОСТ и внесение правок.</p>
+
+            <!-- Пресеты дедлайна -->
+            <div class="mb-6">
+              <label class="block text-xs font-semibold text-slate-300 mb-2.5 uppercase tracking-wider">
+                Срок сдачи (дедлайн):
+              </label>
+              <div class="grid grid-cols-3 gap-2 sm:gap-3" id="deadline-presets">
+                
+                <button type="button" data-days="2" data-urgent="true" class="deadline-btn py-3 px-2 sm:px-4 rounded-xl border border-dark-border bg-dark-surface text-center transition-all hover:border-brand-500 text-xs sm:text-sm font-semibold text-slate-200 flex flex-col items-center justify-center gap-1 active:scale-95">
+                  <span class="text-amber-400 font-bold flex items-center gap-1">⚡️ 1-3 дня</span>
+                  <span class="text-[10px] text-slate-400 font-normal">Срочный тариф</span>
+                </button>
+
+                <button type="button" data-days="5" data-urgent="false" class="deadline-btn py-3 px-2 sm:px-4 rounded-xl border border-brand-500 bg-brand-500/10 text-center transition-all text-xs sm:text-sm font-semibold text-white flex flex-col items-center justify-center gap-1 active:scale-95">
+                  <span class="text-brand-400 font-bold">4-7 дней</span>
+                  <span class="text-[10px] text-slate-300 font-normal">Оптимальный</span>
+                </button>
+
+                <button type="button" data-days="12" data-urgent="false" class="deadline-btn py-3 px-2 sm:px-4 rounded-xl border border-dark-border bg-dark-surface text-center transition-all hover:border-brand-500 text-xs sm:text-sm font-semibold text-slate-200 flex flex-col items-center justify-center gap-1 active:scale-95">
+                  <span class="font-bold">от 10 дней</span>
+                  <span class="text-[10px] text-slate-400 font-normal">Эконом</span>
+                </button>
+
+              </div>
+            </div>
+
+            <!-- Слайдер оригинальности -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-dark-surface/60 border border-dark-border">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs sm:text-sm font-semibold text-white">Требуемый % оригинальности:</span>
+                <span id="originality-value" class="text-lg sm:text-xl font-black text-brand-400 bg-brand-500/10 px-3 py-1 rounded-lg border border-brand-500/30">70%</span>
+              </div>
+              
+              <input id="originality-slider" type="range" min="30" max="95" step="5" value="70" 
+                class="w-full h-2 bg-dark-bg rounded-lg appearance-none cursor-pointer">
+
+              <div class="flex justify-between text-[10px] text-slate-500 mt-2 font-mono">
+                <span>30% (базовый)</span>
+                <span>60%</span>
+                <span>75% (стандарт)</span>
+                <span>95% (максимум)</span>
+              </div>
+
+              <!-- Подсказка при сдвиге слайдера > 80% -->
+              <div id="rewrite-hint" class="hidden mt-3 p-2.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs flex items-center gap-2">
+                <svg class="w-4 h-4 shrink-0 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>💡 Включает ручной глубокий рерайт под закрытые модули «Антиплагиат.ВУЗ».</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ШАГ 4: Контакты и Файл -->
+          <div class="quiz-step hidden" data-step="4">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">4. Куда направить расчет и аудит плана?</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-5">Конфиденциально. Без звонков с неизвестных номеров. Ответ придет прямо в Telegram или мессенджер.</p>
+
+            <div class="space-y-4">
+              <!-- Имя -->
+              <div>
+                <label for="client-name" class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Ваше имя:</label>
+                <input type="text" id="client-name" placeholder="Константин" 
+                  class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-dark-border focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-white text-sm outline-none transition-all">
+              </div>
+
+              <!-- Контакт -->
+              <div>
+                <label for="client-contact" class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">
+                  Telegram никнейм (@username) или Телефон / WhatsApp: <span class="text-brand-400">*</span>
+                </label>
+                <div class="relative">
+                  <input type="text" id="client-contact" placeholder="@student_tg или +7 (999) 000-00-00" 
+                    class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-dark-border focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-white text-sm outline-none transition-all">
+                </div>
+                <p id="contact-error" class="hidden text-rose-400 text-xs mt-1.5 flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                  Укажите ваш Telegram (@username) или номер телефона.
+                </p>
+              </div>
+
+              <!-- Загрузка файла методички -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">
+                  Методичка кафедры или утвержденный план (опционально):
+                </label>
+                <div id="file-drop-area" class="border-2 border-dashed border-dark-border hover:border-brand-500/60 rounded-xl p-4 text-center cursor-pointer transition-all bg-dark-surface/40">
+                  <input type="file" id="method-file" class="hidden" accept=".pdf,.doc,.docx,.rtf,.txt,.zip">
+                  <div id="file-empty-state">
+                    <svg class="w-6 h-6 text-slate-400 mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                    <p class="text-xs text-slate-300 font-medium">Нажмите для выбора файла или перетащите методичку сюда</p>
+                    <p class="text-[10px] text-slate-500 mt-0.5">DOCX, PDF, RTF, ZIP до 25 МБ</p>
+                  </div>
+                  <div id="file-selected-state" class="hidden flex items-center justify-between text-left p-1">
+                    <div class="flex items-center gap-2 overflow-hidden">
+                      <span class="text-brand-400 text-lg">📄</span>
+                      <span id="file-name" class="text-xs font-medium text-white truncate max-w-[200px]">document.pdf</span>
+                    </div>
+                    <button type="button" id="remove-file-btn" class="text-slate-400 hover:text-rose-400 text-xs px-2 py-1">✕ Удалить</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-[11px] text-slate-500 text-center pt-2">
+                Нажимая кнопку, вы соглашаетесь с Политикой обработки данных. Конфиденциально 100%.
+              </div>
+
+            </div>
+          </div>
+
+          <!-- КНОПКИ НАВИГАЦИИ -->
+          <div class="flex items-center gap-3 mt-8 pt-5 border-t border-dark-border">
+            <button type="button" id="prev-btn" class="hidden px-5 py-3.5 rounded-xl border border-dark-border bg-dark-surface hover:bg-dark-border text-slate-300 font-semibold text-xs sm:text-sm transition-all active:scale-95">
+              ← Назад
+            </button>
+
+            <button type="button" id="next-btn" class="flex-1 min-h-[48px] inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-400 hover:to-emerald-500 text-dark-bg font-bold text-sm sm:text-base shadow-lg shadow-brand-500/20 transition-all active:scale-98">
+              <span id="next-btn-text">Продолжить</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- АНИМАЦИЯ ПРОВЕРКИ (2 СЕКУНДЫ) -->
+        <div id="audit-loader" class="hidden absolute inset-0 bg-dark-card/95 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center z-20">
+          <div class="w-16 h-16 relative mb-5">
+            <div class="w-16 h-16 rounded-full border-4 border-brand-500/20 border-t-brand-400 animate-spin"></div>
+            <div class="absolute inset-0 flex items-center justify-center text-xs font-mono text-brand-400 font-bold">ВАК</div>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Идет сверка со стандартами ВАК и ГОСТ 7.32...</h4>
+          <p class="text-xs text-slate-400 max-w-sm mb-4">Анализируем методические требования, коэффициенты сложности и формируем чек-лист для вашей работы</p>
+          <div class="w-48 bg-dark-surface h-1.5 rounded-full overflow-hidden">
+            <div id="loader-fill" class="bg-brand-400 h-full w-0 transition-all duration-1000 ease-out"></div>
+          </div>
+        </div>
+
+        <!-- ЭКРАН УСПЕХА -->
+        <div id="success-screen" class="hidden text-center py-6">
+          <div class="w-16 h-16 rounded-2xl bg-brand-500/10 border border-brand-500/30 text-brand-400 mx-auto flex items-center justify-center text-3xl mb-4">
+            ✓
+          </div>
+          <span class="text-xs font-mono uppercase tracking-widest text-brand-400 font-bold">Заявка #<span id="order-id">2604</span> принята</span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-2">
+            Предварительный аудит запущен!
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto mb-6">
+            Мы зафиксировали стоимость <strong id="final-price-tag" class="text-brand-400 font-bold"></strong>. ГОСТ-чеклист сформирован. 
+            Перейдите в наш официальный Telegram-чат для мгновенного получения отчета без задержек.
+          </p>
+
+          <div class="p-4 rounded-xl bg-dark-surface/80 border border-dark-border max-w-md mx-auto text-left mb-6 text-xs space-y-2">
+            <div class="flex justify-between text-slate-400">
+              <span>Направление:</span>
+              <span id="summary-subject" class="text-white font-medium"></span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Дедлайн:</span>
+              <span id="summary-deadline" class="text-white font-medium"></span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Оригинальность:</span>
+              <span id="summary-orig" class="text-brand-400 font-bold"></span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <a id="success-tg-btn" href="https://t.me/AcademAudit_Support" target="_blank" rel="noopener noreferrer" 
+               class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-400 hover:to-emerald-500 text-dark-bg font-bold text-sm shadow-xl shadow-brand-500/25 transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .4z"/>
+              </svg>
+              <span>Открыть диалог с экспертом</span>
+            </a>
+          </div>
+
+          <p class="text-[11px] text-slate-500 mt-4">
+            Также мы направили уведомление по указанному вами контакту.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== БЛОК «ПОЧЕМУ НАМ ДОВЕРЯЮТ» ==================== -->
+  <section class="py-14 sm:py-20 border-t border-dark-border bg-dark-surface/40">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest text-brand-400 font-bold">Безопасность и стандарты</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Почему студенты доверяют AcademAudit</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2">
+          Мы не просто проверяем текст, а обеспечиваем полное методологическое соответствие до получения зачета.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4">
+            🛡️
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">0% предоплаты за аудит</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Вы платите только после того, как эксперт проверит тему, составит календарный план и согласует структуру.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+            🔍
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Антиплагиат.ВУЗ закрытый пул</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Проверка по закрытым кольцам вузов, базам eLIBRARY, РГБ и модулям перефразирования с официальным PDF-отчетом.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+            📐
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Стандарты ГОСТ 7.32-2017</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Идеальное оформление формул, таблиц, библиографических списков и ссылок по действующим регламентам нормоконтроля.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4">
+            🔄
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Бесплатные доработки</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Если у научного руководителя появятся замечания по содержанию — внесем корректировки в рамках темы абсолютно бесплатно.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ЧАСТЫЕ ВОПРОСЫ (FAQ) ==================== -->
+  <section class="py-14 sm:py-20 border-t border-dark-border">
+    <div class="max-w-3xl mx-auto px-4">
+      
+      <div class="text-center mb-10">
+        <span class="text-xs uppercase tracking-widest text-brand-400 font-bold">Вопросы и ответы</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Часто задаваемые вопросы</h2>
+      </div>
+
+      <div class="space-y-3" id="faq-accordion">
+        
+        <div class="faq-item rounded-xl border border-dark-border bg-dark-card overflow-hidden transition-all">
+          <button type="button" class="faq-btn w-full px-5 py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-white focus:outline-none">
+            <span>Как проверяется оригинальность курсовой работы?</span>
+            <span class="faq-icon text-brand-400 text-lg transition-transform duration-200">+</span>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-dark-border/40 pt-3">
+            Мы проверяем текст в преподавательской системе «Антиплагиат.ВУЗ» со всеми отраслевыми коллекциями (Кольцо вузов, РГБ, Lexpro, Медицина). Вы получаете полный официальный PDF-отчет с подробным распределением заимствований и цитирований.
+          </div>
+        </div>
+
+        <div class="faq-item rounded-xl border border-dark-border bg-dark-card overflow-hidden transition-all">
+          <button type="button" class="faq-btn w-full px-5 py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-white focus:outline-none">
+            <span>Что делать, если научный руководитель еще не утвердил тему?</span>
+            <span class="faq-icon text-brand-400 text-lg transition-transform duration-200">+</span>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-dark-border/40 pt-3">
+            Просто активируйте тумблер «Тема еще не утверждена» в калькуляторе. Наш академический консультант бесплатно подберет 3 актуальные темы с готовыми обоснованиями новизны, которые легко согласовать на кафедре.
+          </div>
+        </div>
+
+        <div class="faq-item rounded-xl border border-dark-border bg-dark-card overflow-hidden transition-all">
+          <button type="button" class="faq-btn w-full px-5 py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-white focus:outline-none">
+            <span>За сколько дней выполняется срочный аудит и доводка?</span>
+            <span class="faq-icon text-brand-400 text-lg transition-transform duration-200">+</span>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-dark-border/40 pt-3">
+            Минимальный срок по срочному тарифу — от 24 часов (1–3 дня). К заказу немедленно подключается профильный специалист по вашей дисциплине без очередей.
+          </div>
+        </div>
+
+        <div class="faq-item rounded-xl border border-dark-border bg-dark-card overflow-hidden transition-all">
+          <button type="button" class="faq-btn w-full px-5 py-4 text-left flex items-center justify-between text-sm sm:text-base font-semibold text-white focus:outline-none">
+            <span>Действительно ли предоплата за первичный аудит составляет 0%?</span>
+            <span class="faq-icon text-brand-400 text-lg transition-transform duration-200">+</span>
+          </button>
+          <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-dark-border/40 pt-3">
+            Да. Первичный анализ структуры, сверка со стандартами ГОСТ и расчет требуемого объема правок проводятся бесплатно. Вы принимаете решение о продолжении сотрудничества только после согласования плана.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ФУТЕР ==================== -->
+  <footer class="border-t border-dark-border bg-dark-surface/60 py-10 text-slate-400 text-xs">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-dark-border">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold">A</div>
+          <span class="text-base font-bold text-white">Academ<span class="text-brand-400">Audit</span></span>
+          <span class="text-slate-600">|</span>
+          <span class="text-[11px] text-slate-500">Сервис академического консалтинга и нормоконтроля</span>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-xs">
+          <a href="#quiz-section" class="hover:text-white transition-colors">Калькулятор</a>
+          <a href="https://t.me/AcademAudit_Support" target="_blank" class="hover:text-white transition-colors">Поддержка в Telegram</a>
+          <button type="button" onclick="openPolicyModal()" class="hover:text-white transition-colors">Политика конфиденциальности</button>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+        <div>
+          © 2026 «AcademAudit». Все права защищены. Информационно-консультационные услуги.
+        </div>
+        <div>
+          ИП / Режим НПД • ОГРНИП 322774600000000 • ИНН 772000000000
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- МОДАЛКА ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ -->
+  <div id="policy-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-dark-card border border-dark-border rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col p-6 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-dark-border">
+        <h4 class="text-base font-bold text-white">Политика обработки персональных данных</h4>
+        <button type="button" onclick="closePolicyModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+      <div class="overflow-y-auto py-4 text-xs text-slate-300 space-y-3 leading-relaxed">
+        <p>1. Сервис «AcademAudit» соблюдает требования Федерального закона № 152-ФЗ «О персональных данных».</p>
+        <p>2. Номера телефонов, Telegram-никнеймы и прикрепляемые материалы собираются исключительно в целях расчета параметров заказа и связи по заявке.</p>
+        <p>3. Сервис не раскрывает и не передает данные третьим лицам или образовательным учреждениям.</p>
+        <p>4. Пользователь в любой момент может запросить удаление переданных контактов через службу поддержки.</p>
+      </div>
+      <div class="pt-3 border-t border-dark-border text-right">
+        <button type="button" onclick="closePolicyModal()" class="px-4 py-2 rounded-xl bg-brand-500 text-dark-bg font-semibold text-xs">Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ЛОГИКА ==================== -->
+  <script>
+    /**
+     * AcademAudit Quiz & Application Engine
+     * Mobile-First, Vanilla JS, Zero dependencies.
+     */
+
+    // --- 1. НАСТРОЙКИ ИНТЕГРАЦИИ TELEGRAM ---
+    const TELEGRAM_CONFIG = {
+      // Укажите токен вашего бота (из @BotFather), например: '7123456789:AAHxxxxx...'
+      botToken: 'YOUR_BOT_TOKEN_HERE',
+      // Укажите chat_id админа или рабочей группы, например: '-1001234567890'
+      chatId: 'YOUR_CHAT_ID_HERE',
+      // Username аккаунта поддержки для прямой ссылки
+      managerUsername: 'AcademAudit_Support'
+    };
+
+    const PRICING = {
+      base: 2490,
+      urgentMultiplier: 1.5,
+      technicalMultiplier: 1.3
+    };
+
+    // --- 2. СОСТОЯНИЕ ФОРМЫ ---
+    const state = {
+      step: 1,
+      totalSteps: 4,
+      subject: 'Юриспруденция и право',
+      isTechnical: false,
+      topic: '',
+      isNoTopic: false,
+      deadlinePreset: '4-7 дней (оптимальный)',
+      isUrgent: false,
+      originality: 70,
+      clientName: '',
+      clientContact: '',
+      fileName: '',
+      calculatedPrice: 2490,
+      utm: {
+        source: 'direct',
+        medium: 'none',
+        campaign: 'organic'
+      }
+    };
+
+    // --- 3. DOM-ЭЛЕМЕНТЫ ---
+    const steps = document.querySelectorAll('.quiz-step');
+    const progressBar = document.getElementById('progress-bar');
+    const currentStepNum = document.getElementById('current-step-num');
+    const stepLabel = document.getElementById('step-label');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const nextBtnText = document.getElementById('next-btn-text');
+    const priceDisplay = document.getElementById('price-display');
+    const urgentBadge = document.getElementById('urgent-badge');
+    const topicInput = document.getElementById('topic-input');
+    const topicError = document.getElementById('topic-error');
+    const noTopicToggle = document.getElementById('no-topic-toggle');
+    const originalitySlider = document.getElementById('originality-slider');
+    const originalityValue = document.getElementById('originality-value');
+    const rewriteHint = document.getElementById('rewrite-hint');
+    const clientNameInput = document.getElementById('client-name');
+    const clientContactInput = document.getElementById('client-contact');
+    const contactError = document.getElementById('contact-error');
+    const fileDropArea = document.getElementById('file-drop-area');
+    const methodFileInput = document.getElementById('method-file');
+    const fileEmptyState = document.getElementById('file-empty-state');
+    const fileSelectedState = document.getElementById('file-selected-state');
+    const fileNameDisplay = document.getElementById('file-name');
+    const removeFileBtn = document.getElementById('remove-file-btn');
+    const auditLoader = document.getElementById('audit-loader');
+    const loaderFill = document.getElementById('loader-fill');
+    const successScreen = document.getElementById('success-screen');
+    const quizForm = document.getElementById('quiz-form');
+
+    const stepNames = [
+      'Направление',
+      'Тема работы',
+      'Срок и оригинальность',
+      'Контакты'
+    ];
+
+    // --- 4. ИНИЦИАЛИЗАЦИЯ ---
+    document.addEventListener('DOMContentLoaded', () => {
+      parseUTMParams();
+      initSubjectSelector();
+      initDeadlineSelector();
+      initSlider();
+      initTopicToggle();
+      initFileUpload();
+      initFAQ();
+      calculatePrice();
+      updateNavigation();
+    });
+
+    // --- 5. ПАРСИНГ UTM-МЕТОК ---
+    function parseUTMParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('utm_source')) state.utm.source = urlParams.get('utm_source');
+      if (urlParams.get('utm_medium')) state.utm.medium = urlParams.get('utm_medium');
+      if (urlParams.get('utm_campaign')) state.utm.campaign = urlParams.get('utm_campaign');
+    }
+
+    // --- 6. ВЫБОР ДИСЦИПЛИНЫ (ШАГ 1) ---
+    function initSubjectSelector() {
+      const cards = document.querySelectorAll('.subject-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => {
+            c.classList.remove('border-brand-500', 'bg-brand-500/10');
+            c.classList.add('border-dark-border', 'bg-dark-surface/70');
+            const indicator = c.querySelector('.check-indicator');
+            if (indicator) indicator.classList.remove('opacity-100'), indicator.classList.add('opacity-0');
+          });
+
+          card.classList.remove('border-dark-border', 'bg-dark-surface/70');
+          card.classList.add('border-brand-500', 'bg-brand-500/10');
+          const activeIndicator = card.querySelector('.check-indicator');
+          if (activeIndicator) {
+            activeIndicator.classList.remove('opacity-0');
+            activeIndicator.classList.add('opacity-100');
+          }
+
+          const radio = card.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            state.subject = radio.value;
+          }
+          state.isTechnical = card.getAttribute('data-tech') === 'true';
+          calculatePrice();
+        });
+      });
+    }
+
+    // --- 7. ТЕМА РАБОТЫ И ТУМБЛЕР (ШАГ 2) ---
+    function initTopicToggle() {
+      noTopicToggle.addEventListener('change', (e) => {
+        state.isNoTopic = e.target.checked;
+        if (state.isNoTopic) {
+          topicInput.value = 'Тема не утверждена кафедрой (требуется бесплатный подбор 3 тем)';
+          topicInput.disabled = true;
+          topicInput.classList.add('opacity-60', 'bg-dark-card');
+          topicError.classList.add('hidden');
+        } else {
+          topicInput.value = '';
+          topicInput.disabled = false;
+          topicInput.classList.remove('opacity-60', 'bg-dark-card');
+        }
+      });
+
+      topicInput.addEventListener('input', () => {
+        state.topic = topicInput.value.trim();
+        if (state.topic.length > 0) {
+          topicError.classList.add('hidden');
+        }
+      });
+    }
+
+    // --- 8. СРОКИ И СЛАЙДЕР (ШАГ 3) ---
+    function initDeadlineSelector() {
+      const deadlineBtns = document.querySelectorAll('.deadline-btn');
+      deadlineBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          deadlineBtns.forEach(b => {
+            b.classList.remove('border-brand-500', 'bg-brand-500/10', 'text-white');
+            b.classList.add('border-dark-border', 'bg-dark-surface', 'text-slate-200');
+          });
+
+          btn.classList.remove('border-dark-border', 'bg-dark-surface', 'text-slate-200');
+          btn.classList.add('border-brand-500', 'bg-brand-500/10', 'text-white');
+
+          state.isUrgent = btn.getAttribute('data-urgent') === 'true';
+          state.deadlinePreset = btn.querySelector('span:first-child').innerText.trim();
+          calculatePrice();
+        });
+      });
+    }
+
+    function initSlider() {
+      originalitySlider.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value, 10);
+        state.originality = val;
+        originalityValue.innerText = val + '%';
+
+        // Подсказка глубокого рерайта при > 80%
+        if (val > 80) {
+          rewriteHint.classList.remove('hidden');
+        } else {
+          rewriteHint.classList.add('hidden');
+        }
+      });
+    }
+
+    // --- 9. ПРИКРЕПЛЕНИЕ ФАЙЛА МЕТОДИЧКИ ---
+    function initFileUpload() {
+      fileDropArea.addEventListener('click', () => methodFileInput.click());
+
+      methodFileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          const file = e.target.files[0];
+          state.fileName = file.name;
+          fileNameDisplay.innerText = file.name;
+          fileEmptyState.classList.add('hidden');
+          fileSelectedState.classList.remove('hidden');
+        }
+      });
+
+      removeFileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        methodFileInput.value = '';
+        state.fileName = '';
+        fileSelectedState.classList.add('hidden');
+        fileEmptyState.classList.remove('hidden');
+      });
+
+      // Drag & Drop
+      fileDropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileDropArea.classList.add('border-brand-400');
+      });
+      fileDropArea.addEventListener('dragleave', () => {
+        fileDropArea.classList.remove('border-brand-400');
+      });
+      fileDropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileDropArea.classList.remove('border-brand-400');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          methodFileInput.files = e.dataTransfer.files;
+          state.fileName = e.dataTransfer.files[0].name;
+          fileNameDisplay.innerText = state.fileName;
+          fileEmptyState.classList.add('hidden');
+          fileSelectedState.classList.remove('hidden');
+        }
+      });
+    }
+
+    // --- 10. РАСЧЕТ ЦЕНЫ (ДИНАМИЧЕСКИЙ) ---
+    function calculatePrice() {
+      let price = PRICING.base;
+
+      if (state.isUrgent) {
+        price = Math.round(price * PRICING.urgentMultiplier);
+        urgentBadge.classList.remove('hidden');
+      } else {
+        urgentBadge.classList.add('hidden');
+      }
+
+      if (state.isTechnical) {
+        price = Math.round(price * PRICING.technicalMultiplier);
+      }
+
+      state.calculatedPrice = price;
+      priceDisplay.innerText = `от ${price.toLocaleString('ru-RU')} ₽`;
+    }
+
+    // --- 11. НАВИГАЦИЯ И ВАЛИДАЦИЯ ШАГОВ ---
+    nextBtn.addEventListener('click', () => {
+      if (validateCurrentStep()) {
+        if (state.step < state.totalSteps) {
+          state.step++;
+          updateStepView();
+        } else {
+          submitApplication();
+        }
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (state.step > 1) {
+        state.step--;
+        updateStepView();
+      }
+    });
+
+    function validateCurrentStep() {
+      if (state.step === 2) {
+        const topic = topicInput.value.trim();
+        if (!state.isNoTopic && topic.length < 3) {
+          topicError.classList.remove('hidden');
+          topicInput.focus();
+          return false;
+        }
+        state.topic = topic;
+        topicError.classList.add('hidden');
+      }
+
+      if (state.step === 4) {
+        const contact = clientContactInput.value.trim();
+        if (contact.length < 4) {
+          contactError.classList.remove('hidden');
+          clientContactInput.focus();
+          return false;
+        }
+        state.clientContact = contact;
+        state.clientName = clientNameInput.value.trim() || 'Студент';
+        contactError.classList.add('hidden');
+      }
+
+      return true;
+    }
+
+    function updateStepView() {
+      steps.forEach(s => {
+        const stepNum = parseInt(s.getAttribute('data-step'), 10);
+        if (stepNum === state.step) {
+          s.classList.remove('hidden');
+        } else {
+          s.classList.add('hidden');
+        }
+      });
+
+      const progressPercent = (state.step / state.totalSteps) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+
+      currentStepNum.innerText = state.step;
+      stepLabel.innerText = stepNames[state.step - 1];
+
+      updateNavigation();
+    }
+
+    function updateNavigation() {
+      if (state.step === 1) {
+        prevBtn.classList.add('hidden');
+      } else {
+        prevBtn.classList.remove('hidden');
+      }
+
+      if (state.step === state.totalSteps) {
+        nextBtnText.innerText = 'Получить расчет и аудит плана';
+      } else {
+        nextBtnText.innerText = 'Продолжить';
+      }
+    }
+
+    // --- 12. ОТПРАВКА ЗАЯВКИ В TELEGRAM BOT API ---
+    async function submitApplication() {
+      // 1. Показываем анимацию проверки стандартов ВАК (2 секунды)
+      auditLoader.classList.remove('hidden');
+      setTimeout(() => {
+        loaderFill.style.width = '100%';
+      }, 50);
+
+      // Формируем текст заявки по техническому заданию
+      const fileNotice = state.fileName ? `\n📎 Файл: ${state.fileName}` : '';
+      const textMessage = 
+`🔥 НОВАЯ ЗАЯВКА С САЙТА!
+📚 Направление: ${state.subject}
+📝 Тема: ${state.topic}
+⏳ Дедлайн: ${state.deadlinePreset}
+📊 Требуемый % оригинальности: ${state.originality}%
+💰 Расчетная стоимость: от ${state.calculatedPrice.toLocaleString('ru-RU')} ₽
+👤 Контакт: ${state.clientContact} (${state.clientName}) (Telegram/WhatsApp)
+🏷 UTM-метки: ${state.utm.source} / ${state.utm.campaign}${fileNotice}`;
+
+      try {
+        if (TELEGRAM_CONFIG.botToken && TELEGRAM_CONFIG.botToken !== 'YOUR_BOT_TOKEN_HERE') {
+          const endpoint = `https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage`;
+          await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: TELEGRAM_CONFIG.chatId,
+              text: textMessage
+            })
+          });
+        } else {
+          console.log('[AcademAudit Demo Mode] Сформировано сообщение для отправки в Telegram:\n', textMessage);
+        }
+      } catch (err) {
+        console.warn('Ошибка отправки в Telegram API:', err);
+      }
+
+      // Выдерживаем 2 секунды анимации сверки с ГОСТ
+      setTimeout(() => {
+        auditLoader.classList.add('hidden');
+        quizForm.classList.add('hidden');
+        renderSuccessScreen();
+      }, 2000);
+    }
+
+    function renderSuccessScreen() {
+      successScreen.classList.remove('hidden');
+      const randomOrderId = Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('order-id').innerText = randomOrderId;
+      document.getElementById('final-price-tag').innerText = `от ${state.calculatedPrice.toLocaleString('ru-RU')} ₽`;
+      document.getElementById('summary-subject').innerText = state.subject;
+      document.getElementById('summary-deadline').innerText = state.deadlinePreset;
+      document.getElementById('summary-orig').innerText = `${state.originality}%`;
+
+      // Генерация ссылки прямого перехода в Telegram с автозаполненным текстом
+      const prefilledText = encodeURIComponent(`Здравствуйте! Номер моей заявки #${randomOrderId} на аудит курсовой (${state.subject}). Жду ГОСТ-чеклист.`);
+      const tgLink = `https://t.me/${TELEGRAM_CONFIG.managerUsername}?text=${prefilledText}`;
+      document.getElementById('success-tg-btn').href = tgLink;
+      document.getElementById('header-tg-link').href = tgLink;
+    }
+
+    // --- 13. FAQ АККОРДЕОН ---
+    function initFAQ() {
+      const faqButtons = document.querySelectorAll('.faq-btn');
+      faqButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const parent = btn.parentElement;
+          const content = parent.querySelector('.faq-content');
+          const icon = parent.querySelector('.faq-icon');
+          const isExpanded = !content.classList.contains('hidden');
+
+          document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+          document.querySelectorAll('.faq-icon').forEach(i => {
+            i.innerText = '+';
+            i.classList.remove('rotate-45');
+          });
+
+          if (!isExpanded) {
+            content.classList.remove('hidden');
+            icon.innerText = '×';
+            icon.classList.add('rotate-45');
+          }
+        });
+      });
+    }
+
+    // --- 14. ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ---
+    function openPolicyModal() {
+      document.getElementById('policy-modal').classList.remove('hidden');
+    }
+    function closePolicyModal() {
+      document.getElementById('policy-modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
